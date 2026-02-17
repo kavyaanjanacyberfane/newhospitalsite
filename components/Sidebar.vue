@@ -1,36 +1,60 @@
 <template>
-  <div
+    <!-- <aside
     :class="[
-      'bg-sidebar text-white h-full flex flex-col',
-      collapsed ? 'w-20' : 'w-64'
+      'bg-white border-r transition-all duration-300 overflow-hidden',
+      collapsed ? 'w-0' : 'w-64',
     ]"
-  >
-    <div class="flex items-center justify-center h-16 border-b border-gray-700">
-      <Icon icon="mdi:hospital-building" class="text-2xl"/>
-      <span v-if="!collapsed" class="ml-2 font-bold">Hospital Site</span>
+  > -->
+ <aside
+  :class="[
+    'bg-white border-r transition-all duration-300 overflow-hidden flex-shrink-0',
+    collapsed ? 'md:w-0 w-0' : 'md:w-64 w-64'
+  ]"
+>
+    <div v-if="!collapsed" class="flex flex-col h-full">
+      <!-- Logo -->
+      <div class="h-16 flex items-center px-6 border-b">
+        <span class="font-semibold text-xl text-gray-700">
+          Saritha Dental
+        </span>
+      </div>
+
+      <nav class="flex-1 p-4 space-y-2 bg-gray-100">
+        <NuxtLink
+          to="/dashboard"
+          class="flex items-center gap-3 p-3 rounded hover:bg-gray-200"
+          active-class="bg-gray-200 font-semibold"
+        >
+          <Icon icon="mdi:view-dashboard-outline" />
+          <span>Dashboard</span>
+        </NuxtLink>
+
+        <NuxtLink
+          to="/appointments"
+          class="flex items-center gap-3 p-3 rounded hover:bg-gray-200"
+          active-class="bg-gray-200 font-semibold"
+        >
+          <Icon icon="mdi:calendar-month-outline" />
+          <span>Appointment</span>
+        </NuxtLink>
+
+        <NuxtLink
+          to="/taskboard"
+          class="flex items-center gap-3 p-3 rounded hover:bg-gray-200"
+          active-class="bg-gray-200 font-semibold"
+        >
+          <Icon icon="mdi:clipboard-text-outline" />
+          <span>Taskboard</span>
+        </NuxtLink>
+      </nav>
     </div>
-
-    <nav class="flex-1 p-2 space-y-2">
-      <div class="flex items-center p-3 hover:bg-gray-700 rounded-lg cursor-pointer">
-        <Icon icon="mdi:view-dashboard"/>
-        <span v-if="!collapsed" class="ml-3">Dashboard</span>
-      </div>
-
-      <div class="flex items-center p-3 hover:bg-gray-700 rounded-lg cursor-pointer">
-        <Icon icon="mdi:clipboard-text"/>
-        <span v-if="!collapsed" class="ml-3">Taskboard</span>
-      </div>
-    </nav>
-  </div>
+  </aside>
 </template>
 
 <script setup>
-import { Icon } from '@iconify/vue'
+import { Icon } from "@iconify/vue";
 
 defineProps({
-  collapsed: Boolean
-})
-
-defineEmits(['update:collapsed'])
+  collapsed: Boolean,
+});
 </script>
-
