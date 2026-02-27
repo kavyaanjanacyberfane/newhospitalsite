@@ -9,10 +9,15 @@
       @click="collapsed = true"
       class="fixed inset-0 bg-black bg-opacity-40 z-30 md:hidden"
     ></div> -->
-     <div
+    <!-- <div
       v-if="!collapsed"
       @click="collapsed = true"
       class="fixed  z-30 md:hidden"
+    ></div> -->
+    <div
+      v-if="!collapsed"
+      @click="collapsed = true"
+      class="fixed inset-0 bg-black bg-opacity-40 z-30 lg:hidden"
     ></div>
 
     <!-- Main Section -->
@@ -26,7 +31,7 @@
       <!-- Page Wrapper -->
       <div class="flex-1 relative p-6 overflow-auto">
         <!-- Page Title Row -->
-        <div class="flex items-center mb-6 relative">
+        <div class="flex items-center mb-3 relative">
           <!-- Collapse Arrow -->
           <button
             @click="collapsed = !collapsed"
@@ -58,9 +63,14 @@ import { Icon } from "@iconify/vue";
 const collapsed = ref(false);
 const route = useRoute();
 
+// Auto collapse on small screens
+if (process.client && window.innerWidth < 1024) {
+  collapsed.value = true;
+}
 const pageTitle = computed(() => {
   if (route.path.startsWith("/appointments")) return "Appointments";
   if (route.path.startsWith("/taskboard")) return "Taskboard";
+  if (route.path.startsWith("/profile")) return "My Profile";
   return "Dashboard";
 });
 </script>
