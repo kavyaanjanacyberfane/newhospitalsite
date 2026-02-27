@@ -17,13 +17,13 @@
 
       <!-- Logo + Name -->
       <div class="flex items-center gap-3 mb-6">
-        <img
+        <!-- <img
           src="/images/sarithalogo.webp"
           alt="Saritha Dental"
           class="w-16 h-16 object-contain"
-        />
+        /> -->
         <span class="text-white text-2xl font-semibold tracking-wide">
-          Saritha Dental
+          XpressMill
         </span>
       </div>
 
