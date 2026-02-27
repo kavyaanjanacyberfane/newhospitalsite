@@ -1,5 +1,9 @@
 <template>
   <header class="h-16 bg-white border-b flex items-center justify-between px-6">
+    <!-- Hamburger (Tablet & Mobile Only) -->
+    <button @click="$emit('toggleSidebar')" class="lg:hidden text-2xl mr-4">
+      <Icon icon="mdi:menu" />
+    </button>
     <!-- Search -->
     <div class="flex items-center bg-gray-100 rounded-md px-3 py-2 w-96">
       <Icon icon="mdi:magnify" class="text-gray-500 mr-2" />
